@@ -27,7 +27,7 @@ class MomentDETR(nn.Module):
             position_embed: torch module of the position_embedding, See position_encoding.py
             txt_position_embed: position_embedding for text
             txt_dim: int, text query input dimension
-            vid_dim: int, video feature input dimension
+            vid_dim: int, video features input dimension
             num_queries: number of object queries, ie detection slot. This is the maximal number of objects
                          Moment-DETR can detect in a single video.
             aux_loss: True if auxiliary decoding losses (loss at each decoder layer) are to be used.
@@ -397,6 +397,7 @@ def build_model(args):
     # For more details on this, check the following discussion
     # https://github.com/facebookresearch/moment_detr/issues/108#issuecomment-650269223
     device = torch.device(args.device)
+
 
     transformer = build_transformer(args)
     position_embedding, txt_position_embedding = build_position_encoding(args)

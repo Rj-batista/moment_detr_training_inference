@@ -71,11 +71,11 @@ class BaseOptions(object):
         parser.add_argument("--no_norm_vfeat", action="store_true", help="Do not do normalize video feat")
         parser.add_argument("--no_norm_tfeat", action="store_true", help="Do not do normalize text feat")
         parser.add_argument("--v_feat_dirs", type=str, nargs="+",
-                            help="video feature dirs. If more than one, will concat their features. "
+                            help="video features dirs. If more than one, will concat their features. "
                                  "Note that sub ctx features are also accepted here.")
-        parser.add_argument("--t_feat_dir", type=str, help="text/query feature dir")
-        parser.add_argument("--v_feat_dim", type=int, help="video feature dim")
-        parser.add_argument("--t_feat_dim", type=int, help="text/query feature dim")
+        parser.add_argument("--t_feat_dir", type=str, help="text/query features dir")
+        parser.add_argument("--v_feat_dim", type=int, help="video features dim")
+        parser.add_argument("--t_feat_dim", type=int, help="text/query features dim")
         parser.add_argument("--ctx_mode", type=str, default="video_tef")
 
         # Model config

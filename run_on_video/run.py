@@ -13,13 +13,14 @@ class MomentDETRPredictor:
     def __init__(self, ckpt_path, clip_model_name_or_path="ViT-B/32", device="cuda"):
         self.clip_len = 2  # seconds
         self.device = device
-        print("Loading feature extractors...")
+        print("Loading features extractors...")
         self.feature_extractor = ClipFeatureExtractor(
             framerate=1/self.clip_len, size=224, centercrop=True,
             model_name_or_path=clip_model_name_or_path, device=device
         )
         print("Loading trained Moment-DETR model...")
         self.model = build_inference_model(ckpt_path).to(self.device)
+
 
     @torch.no_grad()
     def localize_moment(self, video_path, query_list):
@@ -90,12 +91,11 @@ class MomentDETRPredictor:
 def run_example():
     # load example data
     from utils.basic_utils import load_jsonl
-    video_path = "run_on_video/example/RoripwjYFp8_60.0_210.0.mp4"
-    query_path = "run_on_video/example/queries.jsonl"
+    video_path = "run_on_video/example/lol_clip.mp4"
+    query_path = "run_on_video/example/queries_lol.jsonl"
     queries = load_jsonl(query_path)
     query_text_list = [e["query"] for e in queries]
-    ckpt_path = "run_on_video/moment_detr_ckpt/model_best.ckpt"
-
+    ckpt_path = "results/hl-video_tef-exp-2023_06_16_01_44_53/model_best.ckpt"
     # run predictions
     print("Build models...")
     clip_model_name_or_path = "ViT-B/32"
@@ -114,13 +114,14 @@ def run_example():
         print("-"*30 + f"idx{idx}")
         print(f">> query: {query_data['query']}")
         print(f">> video_path: {video_path}")
-        print(f">> GT moments: {query_data['relevant_windows']}")
+        #print(f">> GT moments: {query_data['relevant_windows']}")
         print(f">> Predicted moments ([start_in_seconds, end_in_seconds, score]): "
               f"{predictions[idx]['pred_relevant_windows']}")
-        print(f">> GT saliency scores (only localized 2-sec clips): {query_data['saliency_scores']}")
+        #print(f">> GT saliency scores (only localized 2-sec clips): {query_data['saliency_scores']}")
         print(f">> Predicted saliency scores (for all 2-sec clip): "
               f"{predictions[idx]['pred_saliency_scores']}")
 
 
 if __name__ == "__main__":
+
     run_example()

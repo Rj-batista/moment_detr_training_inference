@@ -26,6 +26,8 @@ credentials
 *.rar
 *.tar
 *.zip
+*.mp4
+*.npz
 
 # Logs and databases #
 ######################

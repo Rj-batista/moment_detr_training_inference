@@ -37,7 +37,7 @@ def load_jsonl(filename):
 
 def save_jsonl(data, filename):
     """data is a list"""
-    with open(filename, "w") as f:
+    with open(filename, "w+") as f:
         f.write("\n".join([json.dumps(e) for e in data]))
 
 

@@ -6,8 +6,8 @@ results_root=results
 exp_id=pt
 
 ######## data paths
-train_path=data/subs_train.jsonl
-eval_path=data/highlight_val_release.jsonl
+train_path=data/output_train.jsonl
+eval_path=data/output_eval.jsonl
 eval_split_name=val
 
 ######## setup video+text features

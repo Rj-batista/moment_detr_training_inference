@@ -6,8 +6,8 @@ results_root=results
 exp_id=exp
 
 ######## data paths
-train_path=data/highlight_train_release.jsonl
-eval_path=data/highlight_val_release.jsonl
+train_path=annotations/output_train.jsonl
+eval_path=annotations/output_eval.jsonl
 eval_split_name=val
 
 ######## setup video+text features
@@ -16,10 +16,10 @@ feat_root=features
 # video features
 v_feat_dim=0
 v_feat_dirs=()
-if [[ ${v_feat_types} == *"slowfast"* ]]; then
-  v_feat_dirs+=(${feat_root}/slowfast_features)
-  (( v_feat_dim += 2304 ))  # double brackets for arithmetic op, no need to use ${v_feat_dim}
-fi
+#if [[ ${v_feat_types} == *"slowfast"* ]]; then
+#  v_feat_dirs+=(${feat_root}/slowfast_features)
+#  (( v_feat_dim += 2304 ))  # double brackets for arithmetic op, no need to use ${v_feat_dim}
+#fi
 if [[ ${v_feat_types} == *"clip"* ]]; then
   v_feat_dirs+=(${feat_root}/clip_features)
   (( v_feat_dim += 512 ))
