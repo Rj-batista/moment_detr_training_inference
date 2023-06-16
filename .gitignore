@@ -10,6 +10,7 @@ tmp*.py
 *tmp*
 *pickle
 credentials
+projet
 
 # compiled files #
 *.pyc
